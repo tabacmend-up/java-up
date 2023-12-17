@@ -1,3 +1,35 @@
 {
-  "settingsInheritedFrom": "tabacmend-up/whitesource-config@main"
+    "settingsInheritedFrom": "tabacmend-up/whitesource-config@main",
+    "scanSettings": {
+        "baseBranches": [
+            "master",
+            "log4j"
+        ],
+        "enableIaC": true
+    },
+    "scanSettingsSAST": {
+        "enableScan": true,
+        "scanPullRequests": true,
+        "incrementalScan": true,
+        "baseBranches": [
+            "master",
+            "log4j"
+        ],
+        "snippetSize": 10
+    },
+    "remediateSettings": {
+        "workflowRules": {
+            "enabled": true,
+            "minVulnerabilitySeverity": "LOW"
+        },
+        "enableRenovate": true,
+        "extends": [
+            "config:recommended",
+            "mergeConfidence:all-badges",
+            "github>mend-toolkit/mend-examples//Repo-Integration/Renovate/smart-merge"
+        ]
+    },
+    "leastVulnerablePackageSettings": {
+        "enabled": true
+    }
 }
