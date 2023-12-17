@@ -2,7 +2,7 @@
     "settingsInheritedFrom": "tabacmend-up/whitesource-config@main",
     "scanSettings": {
         "baseBranches": [
-            "master",
+            "main",
             "log4j"
         ],
         "enableIaC": true
@@ -12,7 +12,7 @@
         "scanPullRequests": true,
         "incrementalScan": true,
         "baseBranches": [
-            "master",
+            "main",
             "log4j"
         ],
         "snippetSize": 10
