@@ -22,6 +22,6 @@ jobs:
         echo Start Mend CLI scan
         ./mend sast --dir ./ --name=${{github.event.repository.name}}-${{github.ref_name}}-${{github.sha}} --app=${{github.event.repository.name}} --baseline=true --report=true --formats sarif --filename Mend_SAST
     - name: Github Security Results Upload
-      uses: github/codeql-action/upload-sarif@v2
+      uses: github/codeql-action/upload-sarif@v3
       with:
         sarif_file: "Mend_SAST.sarif"
