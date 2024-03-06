@@ -1,0 +1,21 @@
+name: Mend Image Scan
+
+on: workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Mend CLI Scan
+      env:
+        MEND_EMAIL: ${{secrets.MEND_EMAIL}}
+        MEND_USER_KEY: ${{secrets.MEND_USER_KEY}}
+        MEND_URL: https://saas-eu.mend.io
+      run: |
+        docker build . -t webgoat:local
+        echo Downloading Mend CLI
+        curl https://downloads.mend.io/cli/linux_amd64/mend -o /usr/local/bin/mend && chmod +x /usr/local/bin/mend
+        mend image webgoat:local -s "*//GH_Webgoat//image_code_to_cloud"
